@@ -2,13 +2,14 @@ import {AppBar, Toolbar,Box, Typography,styled} from '@mui/material'
 //components
 import Serch from './Serch';
 import CustomButtons from './CustomButtons';
+import {Link} from 'react-router-dom';
 
 const StyleHeader = styled(AppBar)`
   background: #2874f0;
   height:55px
 `;
 
-const Components = styled(Box)`
+const Components = styled(Link)`
     margin-left: 12%;
     line-height:0;
 `;
@@ -40,7 +41,7 @@ const Header =() =>{
     return(
         <StyleHeader>
             <Toolbar style={{minHeight:55}}>
-                <Components>
+                <Components to={''} style={{textDecoration:'none', color:'inherit'}}>
                     <img src={logoURL} alt="logo" style={{ width:75}}/>
                     <Box style ={{display: 'flex'}}>
                         <SubHeading>Akash&nbsp;
