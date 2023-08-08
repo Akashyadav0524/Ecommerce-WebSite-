@@ -3,7 +3,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getProductDetails } from "../../redux/actions/productActions";
-import { Box, Typography ,Grid, styled} from  '@mui/material';
+import { Box ,Grid, styled} from  '@mui/material';
 import ActionItem from "./ActionItem";
 import ProductDetail from "./ProductDetail";
 
@@ -12,10 +12,13 @@ const Component = styled(Box)`
     margin-top: 55px
 `;
 
-const Container = styled(Grid)`
-    background: #FFFFFF;
-    display:flex;
- `;
+const Container = styled(Grid)(({ theme }) => ({
+    background: '#FFFFFF',
+    display: 'flex',
+    [theme.breakpoints.down('md')]: {
+        margin: 0
+    }
+}))
 
  const RightContainer = styled(Grid)`
    margin-top: 50px;

@@ -11,20 +11,38 @@ import { DataContext } from "../../context/DataProvider";
 import LoginDialog from "../login/LoginDialog";
 import Profile from "./Profile";
 
-
-const Wrapper = styled(Box)`
-  display:flex;
-  margin:0 3% 0 auto;
-  & > button, & > p, & div{
-    margin-right:40px;
-    font-size:16px;
-    align-items:center;
+const Wrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  margin: '0 3% 0 auto',
+  
+  '& > *': {
+    marginRight: 40,
+     
+      fontSize: 16,
+      alignItems: 'center',
+      // [theme.breakpoints.down('sm')]: {
+      //     color: '#2874f0',
+      //     alignItems: 'center',
+      //     display: 'flex',
+      //     flexDirection: 'column',
+      //     marginTop: 10
+      // }
+  },
+  [theme.breakpoints.down('md')]: {
+      display: 'block'
   }
-`;
+}));
 
-const Container = styled(Box)`
-  display:flex;
-`;
+
+const Container = styled(Box)(({theme}) =>({
+  display:'flex',
+  [theme.breakpoints.down('md')]:{
+    display:'block'
+  } 
+  
+}));
+  
+
 
 const LogiButton= styled(Button)`
  color:#2874f0;
@@ -60,8 +78,8 @@ const CustomButtons = () => {
                       <LogiButton variant="contained" onClick={() => openDialog()}>Login</LogiButton>
                     }
                         
-                        <Typography style={{margintop:3 , width:135}}>Become a Seller</Typography>
-                        <Typography style={{margintop:3 }}>More</Typography>
+                        <Typography style={{marginTop: 3 , width: 135}}>Become a Seller</Typography>
+                        <Typography style={{marginTop: 3 }}>More</Typography>
 
                         <Container>
                             <ShoppingCart/>

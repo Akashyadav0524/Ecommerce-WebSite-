@@ -17,6 +17,16 @@ const StyledBadge = styled(Badge)`
    
 `;
 
+const ColumnText = styled(TableRow)`
+    font-size: 14px;
+    vertical-align: baseline;
+    & > td {
+        font-size: 14px;
+        margin-top: 10px;
+        border:none;
+    }
+`
+
 
 
 const ProductDetail =({product}) =>{
@@ -49,35 +59,35 @@ const ProductDetail =({product}) =>{
             </SmallText>
             <Table>
                 <TableBody>
-                    <TableRow>
+                    <ColumnText>
                         <TableCell style={{ color:'#878787'}}>Delivery</TableCell>
                         <TableCell style={{ fontWeight:600}}>Delivery by {date.toDateString()} | ₹40</TableCell>
-                    </TableRow>
+                    </ColumnText>
 
-                    <TableRow>
+                    <ColumnText>
                         <TableCell style={{ color:'#878787'}}>Warranty</TableCell>
-                        <TableCell>No Warranty</TableCell>
-                    </TableRow>
+                        <TableCell>• No Warranty</TableCell>
+                    </ColumnText>
 
-                    <TableRow>
+                    <ColumnText>
                         <TableCell style={{ color:'#878787'}}>Seller</TableCell>
                         <TableCell >
-                            <Box component="span"  style={{ color:'#2874f0'}}>SuperComNet</Box>
+                            <Box component="span"  style={{ color:'#2874f0'}}>• SuperComNet</Box>
                             <Typography>GST invoice available</Typography>
-                            <Typography>View more sellers starting from ₹100</Typography>
+                            <Typography>View more sellers starting from ₹{product.price.cost}</Typography>
                         </TableCell>
-                    </TableRow>
+                    </ColumnText>
 
-                    <TableRow>
+                    <ColumnText>
                         <TableCell colSpan={2}>
                         <img src={adURL} alt='superCoin' style={{width: 390}} />
                         </TableCell>
-                    </TableRow>
+                    </ColumnText>
 
-                    <TableRow>
+                    <ColumnText>
                         <TableCell style={{ color:'#878787'}}>Description</TableCell>
                         <TableCell>{product.description}</TableCell>
-                    </TableRow>
+                    </ColumnText>
 
 
                 </TableBody>
