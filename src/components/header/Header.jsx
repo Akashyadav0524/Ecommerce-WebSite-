@@ -29,6 +29,7 @@ const PlusImage = styled('img')({
 
 const CustomButtonsWrapper = styled(Box)(({ theme }) => ({ 
     margin: '0 5% 0 auto', 
+    alignItems: 'center',
     [theme.breakpoints.down('md')]: {
         display: 'none'
     }

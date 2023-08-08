@@ -13,22 +13,15 @@ import Profile from "./Profile";
 
 const Wrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
-  margin: '0 3% 0 auto',
-  
+  margin: '0 5% 0 auto',
+  alignItems: 'center',
   '& > *': {
-    marginRight: 40,
-     
-      fontSize: 16,
-      alignItems: 'center',
-      // [theme.breakpoints.down('sm')]: {
-      //     color: '#2874f0',
-      //     alignItems: 'center',
-      //     display: 'flex',
-      //     flexDirection: 'column',
-      //     marginTop: 10
-      // }
+    marginRight :'40px !important',
+    fontSize: 16,
+    alignItems: 'center'
   },
   [theme.breakpoints.down('md')]: {
+      
       display: 'block'
   }
 }));
@@ -71,18 +64,18 @@ const CustomButtons = () => {
    }
 
                 return(
-                    <Wrapper>
+                    <Wrapper >
                     {
                       account ? <Profile account={account} setAccount={setAccount} />
                        :
                       <LogiButton variant="contained" onClick={() => openDialog()}>Login</LogiButton>
                     }
                         
-                        <Typography style={{marginTop: 3 , width: 135}}>Become a Seller</Typography>
+                        <Typography style={{marginTop: 3 , width: 135,whiteSpace: 'nowrap'}}>Become a Seller</Typography>
                         <Typography style={{marginTop: 3 }}>More</Typography>
 
                         <Container>
-                            <ShoppingCart/>
+                            <ShoppingCart />
                             <Typography>Cart</Typography>
                         </Container>
                         <LoginDialog open ={open} setOpen ={setOpen}/>

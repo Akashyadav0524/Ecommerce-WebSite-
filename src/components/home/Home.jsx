@@ -18,6 +18,7 @@ import MidSection from './MidSection';
 const Component = styled(Box)`
 padding: 10px 10px;
 background: #F2F2F2;
+overflow: hidden;
 
 `
 
