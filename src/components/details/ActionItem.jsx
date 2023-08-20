@@ -32,20 +32,20 @@ const StyleButton = styled(Button)(({ theme }) => ({
     }
 }));
    
+//Remarks 21:00
 
 
 
-
-const ActionItem =({product}) =>{
+const ActionItem =({ product }) =>{
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [quantity] = useState(1);
 
-    const{ id }= product;
+    const { id }= product;
 
     const addItemToCart =() =>{
-        dispatch(addToCart(id,quantity))
+        dispatch(addToCart( id, quantity))
         navigate('/cart');
     }
 

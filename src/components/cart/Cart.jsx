@@ -1,154 +1,96 @@
-// import {useSelector} from 'react-redux'
-// import {Grid, Typography,Box,styled} from '@mui/material';
-// //Components
+import { useSelector } from 'react-redux'
+import {Grid, Typography,Box,styled, Button} from '@mui/material';
+//Components
 
-// import CartItem from './CartItem';
-// import TotalView from './CartItem';
-
-
-// const Container = styled(Grid)`
-//    padding : 30px 135px;
-
-// `
-
-// const Header = styled(Box)`
-//     padding : 15px 24px;
-// `
-// const Cart =() =>{
-
-//     const { cartItems } = useSelector(state => state.cart);
-
-//     return (
-//         <>
-//             {
-//                 cartItems.length ?
-//                     <Container container>
-
-//                         <Grid item lg={9} md={9} sm={12} xs={12}>
-//                             <Header>
-//                                 <Typography>My Cart ({cartItems.length})</Typography>
-//                             </Header>
-//                             {   cartItems.map(item => (
-//                                 <CartItem item={item}/>
-//                             ))
-//                         }
-//                         </Grid>
-
-//                         <Grid item lg={3} md={3} sm={3} xs={12}>
-//                             <TotalView />
-//                         </Grid>
-//                     </Container>
-
-//                 : <div>Empty</div>
-//             }
-
-//         </>
-
-        
-//     )
-// }
-
-// export default Cart;
-import { useEffect } from 'react';
-
-import { Box, Typography,  Grid, styled } from '@mui/material';
-import { useParams } from 'react-router-dom';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
-
+import CartItem from './CartItem';
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
-import CartItem from './CartItem';
 
-// import { post } from '../../utils/paytm';
-// import { payUsingPaytm } from '../../service/api';
 
-const Component = styled(Grid)(({ theme }) => ({
+const Container = styled(Grid)(({theme}) => ({
+
     padding: '30px 135px',
-    display: 'flex',
-    [theme.breakpoints.down('sm')]: {
-        padding: '15px 0'
+    [theme.breakpoints.down('md')]: {
+        padding:'15px 0'
     }
-}));
 
-const LeftComponent = styled(Grid)(({ theme }) => ({
-    paddingRight: 15,
-    [theme.breakpoints.down('sm')]: {
-        marginBottom: 15
-    }
-}));
+
+}))
+
 
 const Header = styled(Box)`
-    padding: 15px 24px;
+    padding : 15px 24px;
     background: #fff;
 `;
 
-// const BottomWrapper = styled(Box)`
-//     padding: 16px 22px;
-//     background: #fff;
-//     box-shadow: 0 -2px 10px 0 rgb(0 0 0 / 10%);
-//     border-top: 1px solid #f0f0f0;
-// `;
+const StyledButton = styled(Button)`
+    display:flex;
+    margin-left:auto;
+    background: #fb641b;
+    color: #fff;
+    width:250px;
+    height:51px;
+    border-radius: 2px;
 
-// const StyledButton = styled(Button)`
-//     display: flex;
-//     margin-left: auto;
-//     background: #fb641b;
-//     color: #fff;
-//     border-radius: 2px;
-//     width: 250px;
-//     height: 51px;
-// `;
+`;
 
-const Cart = () => {
-    const cartDetails = useSelector(state => state.cart);
-    const { cartItems } = cartDetails;
-    const { id } = useParams();
+const LeftComponent = styled(Grid)(({theme}) => ({
 
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        if(cartItems && id !== cartItems.id)   
-            dispatch(addToCart(id));
-    }, [dispatch, cartItems, id]);
-
-    const removeItemFromCart = (id) => {
-        dispatch(removeFromCart(id));
+    paddingRight: 15,
+    [theme.breakpoints.down('md')]: {
+        marginBottom:15
     }
 
-    // const buyNow = async () => {
-    //     let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
-    //     var information = {
-    //         action: 'https://securegw-stage.paytm.in/order/process',
-    //         params: response    
-    //     }
-    //     post(information);
-    // }
+
+}))
+    
+
+
+const ButtonWrapper = styled(Box)`
+    padding : 16px 22px;
+    background: #fff;
+    box-shadow: 0 -2px 10px 0 rgb(0 0 0 /10%); 
+    border-top: 1px solid #f0f0f0;
+  
+`;
+
+
+const Cart =() =>{
+
+    const { cartItems } = useSelector(state => state.cart);
 
     return (
         <>
-        { cartItems.length ? 
-            <Component container>
-                <LeftComponent item lg={9} md={9} sm={12} xs={12}>
-                    <Header>
-                        <Typography style={{fontWeight: 600, fontSize: 18}}>My Cart ({cartItems?.length})</Typography>
-                    </Header>
-                        {   cartItems.map(item => (
-                                <CartItem item={item} removeItemFromCart={removeItemFromCart}/>
-                            ))
-                        }
-                    {/* <BottomWrapper>
-                        <StyledButton onClick={() => buyNow()} variant="contained">Place Order</StyledButton>
-                    </BottomWrapper> */}
-                </LeftComponent>
-                <Grid item lg={3} md={3} sm={12} xs={12}>
-                    <TotalView cartItems={cartItems} />
-                </Grid>
-            </Component> : <EmptyCart />
-        }
+            {
+                cartItems.length ?
+                    <Container container>
+
+                        <LeftComponent item lg={9} md={9} sm={12} xs={12}>
+                            <Header>
+                                <Typography>My Cart ({cartItems.length})</Typography>
+                            </Header>
+
+                            {  
+                                    cartItems.map(item => (
+                                    <CartItem item={item} />
+                                ))
+                            }
+                            <ButtonWrapper>
+                                <StyledButton>Place Order</StyledButton>
+                            </ButtonWrapper>
+                        </LeftComponent>
+
+                        <Grid item lg={3} md={3} sm={3} xs={12}>
+                            <TotalView cartItems={cartItems}/>
+                        </Grid>
+                    </Container>
+
+                : <EmptyCart/>
+            }
+
         </>
 
+        
     )
 }
 

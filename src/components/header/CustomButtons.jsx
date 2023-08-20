@@ -1,10 +1,12 @@
 import { useState, useContext } from "react";
+import { useSelector } from "react-redux";
 
 
 
-import { Box,Button, Typography,styled } from "@mui/material";
+import { Badge, Box,Button,  Typography,styled } from "@mui/material";
 import { ShoppingCart} from '@mui/icons-material'
 import { DataContext } from "../../context/DataProvider";
+import { Link } from 'react-router-dom';
 
 //components 
 
@@ -16,7 +18,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
   margin: '0 5% 0 auto',
   alignItems: 'center',
   '& > *': {
-    marginRight :'40px !important',
+    marginRight :'20px !important',
     fontSize: 16,
     alignItems: 'center'
   },
@@ -27,8 +29,12 @@ const Wrapper = styled(Box)(({ theme }) => ({
 }));
 
 
-const Container = styled(Box)(({theme}) =>({
+const Container = styled(Link)(({theme}) =>({
   display:'flex',
+  textDecoration:"none",
+  color:'inherit',
+
+ 
   [theme.breakpoints.down('md')]:{
     display:'block'
   } 
@@ -58,6 +64,8 @@ const CustomButtons = () => {
 
   const { account ,setAccount} = useContext(DataContext);
 
+  const {cartItems} = useSelector(state => state.cart);
+
    
   const openDialog =() =>{
      setOpen(true);
@@ -74,9 +82,11 @@ const CustomButtons = () => {
                         <Typography style={{marginTop: 3 , width: 135,whiteSpace: 'nowrap'}}>Become a Seller</Typography>
                         <Typography style={{marginTop: 3 }}>More</Typography>
 
-                        <Container>
-                            <ShoppingCart />
-                            <Typography>Cart</Typography>
+                        <Container to="/cart">
+                            <Badge badgeContent ={cartItems.length} color="secondary">
+                            <ShoppingCart style={{fontSize:'25'}}/>
+                            </Badge>
+                            <Typography style={{ marginLeft: 10} }>Cart</Typography>
                         </Container>
                         <LoginDialog open ={open} setOpen ={setOpen}/>
                     </Wrapper>
