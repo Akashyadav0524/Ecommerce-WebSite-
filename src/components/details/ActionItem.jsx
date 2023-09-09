@@ -8,13 +8,36 @@ import { payUsingPaytm } from '../../service/api';
 import { post } from '../../utils/paytm';
 
 
+// const LeftContainer = styled(Box)(({ theme }) => ({
+//     minWidth: '40%',
+//     padding: '40px 0 0 80px',
+//     [theme.breakpoints.down('lg')]: {
+//         padding: '20px 40px'
+//     }
+// }))
+
 const LeftContainer = styled(Box)(({ theme }) => ({
     minWidth: '40%',
     padding: '40px 0 0 80px',
-    [theme.breakpoints.down('lg')]: {
-        padding: '20px 40px'
-    }
-}))
+  
+    [theme.breakpoints.up('lg')]: {
+      padding: '20px 40px',
+    },
+  
+    [theme.breakpoints.up('md')]: {
+      minWidth: '50%',
+    },
+  
+    [theme.breakpoints.up('sm')]: {
+      minWidth: '60%',
+      padding: '10px 20px',
+    },
+  
+    [theme.breakpoints.up('xs')]: {
+      minWidth: '80%',
+      padding: '5px 10px',
+    },
+  }));
 
 
 const Image = styled('img')({

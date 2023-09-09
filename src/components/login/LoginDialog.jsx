@@ -6,12 +6,40 @@ import { DataContext } from '../../context/DataProvider';
 
 
 
-const Component = styled(DialogContent)`
-    height: 70vh;
-    width: 90vh;
-    padding: 0;
-    padding-top: 0;
-`;
+// const Component = styled(DialogContent)`
+//     height: 70vh;
+//     width: 90vh;
+//     padding: 0;
+//     padding-top: 0;
+// `;
+
+const Component = styled(DialogContent)(({ theme }) => ({
+    height: '100vh',
+    width: '100vw',
+    padding: 0,
+    paddingTop: 0,
+  
+    [theme.breakpoints.up('sm')]: {
+      height: '90vh',
+      width: '80vw',
+    },
+  
+    [theme.breakpoints.up('md')]: {
+      height: '80vh',
+      width: '70vw',
+    },
+  
+    [theme.breakpoints.up('lg')]: {
+      height: '100vh',
+      width: '60vw',
+      overflowY: 'hidden',
+    },
+  
+    [theme.breakpoints.up('xl')]: {
+      height: '60vh',
+      width: '50vw',
+    },
+  }));
 
 const LoginButton = styled(Button)`
     text-transform: none;
@@ -48,7 +76,7 @@ const Wrapper = styled(Box)`
     padding: 25px 35px;
     display: flex;
     flex: 1;
-    overflow: auto;
+    ${'' /* overflow: ; */}
     flex-direction: column;
     & > div, & > button, & > p {
         margin-top: 20px;
@@ -65,7 +93,7 @@ const Error = styled(Typography)`
 // height: 70vh;
     
 const Image = styled(Box)`
-    background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
+    background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 75% no-repeat;
     width: 40%;
     height: 100%;
     padding: 45px 35px;

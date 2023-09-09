@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 
 const SerchContainer = styled(Box)`
 background:#fff;
-width:38%;
-border-radius :2px;
+width:29%;
+border-radius :1.5px;
 margin-left:10px;
 display:flex;
 `;
@@ -19,7 +19,9 @@ display:flex;
 const InputSerchBase = styled(InputBase)`
     padding-left:20px;
     width:100%;
-    font-size:unset;
+    font-size:small;
+    
+   
 `;
 
 const SerchIconWrapper = styled(Box)`

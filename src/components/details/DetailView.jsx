@@ -20,13 +20,59 @@ const Container = styled(Grid)(({ theme }) => ({
     }
 }))
 
- const RightContainer = styled(Grid)`
-   margin-top: 50px;
-   padding-left: 25px;
-   & >p {
-    margin-top: 10px;
-   }
- `;
+//  const RightContainer = styled(Grid)`
+//    margin-top: 50px;
+//    padding-left: 25px;
+//    & >p {
+//     margin-top: 10px;
+//    }
+//  `;
+
+const RightContainer = styled(Grid)(({ theme }) => ({
+    marginTop: '50px',
+    paddingLeft: '25px',
+  
+    '& > p': {
+      marginTop: '10px',
+    },
+  
+    [theme.breakpoints.up('lg')]: {
+      marginTop: '70px',
+      paddingLeft: '45px',
+  
+      '& > p': {
+        marginTop: '15px',
+        paddingLeft: '40px',
+      },
+    },
+  
+    [theme.breakpoints.up('md')]: {
+      marginTop: '60px',
+      paddingLeft: '20px',
+  
+      '& > p': {
+        marginTop: '12px',
+      },
+    },
+  
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '40px',
+      paddingLeft: '15px',
+  
+      '& > p': {
+        marginTop: '10px',
+      },
+    },
+  
+    [theme.breakpoints.up('xs')]: {
+      marginTop: '30px',
+      paddingLeft: '10px',
+  
+      '& > p': {
+        marginTop: '8px',
+      },
+    },
+  }));
 
 
 const DetailView = () =>{

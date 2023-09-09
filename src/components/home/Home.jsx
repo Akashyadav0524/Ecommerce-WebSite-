@@ -46,6 +46,7 @@ const Home =() =>{
             <Slide products={products} title="Suggesting items" timer ={false}/>
             <Slide products={products} title="Top Selection" timer ={false}/>
             <Slide products={products} title="Recommended Items" timer ={false}/>
+            
             <Slide products={products} title="Trending Offers" timer ={false}/>
             <Slide products={products} title="Season's Top picks" timer ={false}/>
             <Slide products={products} title="Top Deals on Accessories" timer ={false}/>
