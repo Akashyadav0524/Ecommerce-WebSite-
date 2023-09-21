@@ -14,6 +14,8 @@ import Banner from './Banner';
 import  Slide from './Slide';
 import MidSlide from './MidSlide';
 import MidSection from './MidSection';
+import BottomSection from './BottomSection';
+import BottomSlide from './BottomSlide';
 
 const Component = styled(Box)`
 padding: 10px 10px;
@@ -46,7 +48,8 @@ const Home =() =>{
             <Slide products={products} title="Suggesting items" timer ={false}/>
             <Slide products={products} title="Top Selection" timer ={false}/>
             <Slide products={products} title="Recommended Items" timer ={false}/>
-            
+            <BottomSlide products ={products} title="Travel Dream" timer ={false}/>
+            <BottomSection />
             <Slide products={products} title="Trending Offers" timer ={false}/>
             <Slide products={products} title="Season's Top picks" timer ={false}/>
             <Slide products={products} title="Top Deals on Accessories" timer ={false}/>
